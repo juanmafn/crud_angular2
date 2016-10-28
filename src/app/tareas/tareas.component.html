@@ -1,0 +1,19 @@
+<h1>
+  Tareas
+</h1>
+
+<h3>
+  Añade una tarea
+</h3>
+<form (submit)="addTarea()">
+  <input class="form-control" type="text" [(ngModel)]="nuevo" name="nuevo" placeholder="Introduce nueva tarea" />
+</form>
+
+<ul class="list-group" #list>
+  <li class="list-group-item" *ngIf="tareas.length === 0">No hay elementos</li>
+  <li *ngFor="let tarea of tareas" class="list-group-item">
+    <input type="text" [value]="tarea.tarea" />
+    <button (click)="editTarea(tarea, list)" class="btn btn-warning btn-small">Modificar</button>
+    <button (click)="deleteTarea(tarea._id)" class="btn btn-danger btn-small">Borrar</button>
+  </li>
+</ul>
